@@ -1,6 +1,10 @@
 const promoButton = document.querySelector("#promoButton");
+const promoMessage = document.querySelector("#promoMessage");
 
-promoButton.addEventListener("click", () => {
-  promoButton.textContent = "Promo: Gratis kurma untuk setiap pembelian Qohwa!";
-  console.log("Promo Saudi Coffee berhasil ditampilkan.");
-});
+if (promoButton) {
+  promoButton.addEventListener("click", () => {
+    promoMessage.textContent =
+      "Promo: Gratis kurma untuk setiap pembelian Qahwa!";
+    promoButton.textContent = "Promo sudah dilihat";
+  });
+}

@@ -3,29 +3,109 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Saudi Coffee - kopi khas Arab dari UMKM Pekalongan."
+    />
     <title>Saudi Coffee - Website UMKM</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Saudi Coffee - Beranda">
+          <span class="brand-mark" aria-hidden="true">☕</span>
+          <span>Saudi Coffee</span>
+        </a>
+        <nav aria-label="Navigasi utama">
+          <a href="index.html" aria-current="page">Beranda</a>
+          <a href="tentang.html">Tentang Kami</a>
+          <a href="#profil">Profil</a>
+        </nav>
+      </div>
+    </header>
+
     <main class="page">
-      <section class="hero">
-        <p class="eyebrow">UMKM Pekalongan</p>
-        <h1>Saudi Coffee</h1>
-        <p>
-          Kopi khas Arab dengan cita rasa autentik, teman belajar, bekerja, dan
-          berdiskusi.
-        </p>
-        <button id="promoButton" type="button">Lihat promo hari ini</button>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">UMKM Pekalongan</p>
+          <h1 id="hero-title">Saudi Coffee</h1>
+          <p class="lead">
+            Kopi khas Arab dengan cita rasa autentik, teman belajar, bekerja,
+            dan berdiskusi.
+          </p>
+          <button id="promoButton" type="button">Lihat promo hari ini</button>
+          <p id="promoMessage" class="promo-message" aria-live="polite"></p>
+        </div>
+        <img
+          class="hero-image"
+          src="images/saudi-coffee.svg"
+          alt="Ilustrasi secangkir kopi Arab dengan kurma di sampingnya"
+        />
       </section>
 
-      <section aria-labelledby="produk-title">
+      <section
+        id="profil"
+        class="content-section"
+        aria-labelledby="profil-title"
+      >
+        <p class="section-label">Profil</p>
+        <h2 id="profil-title">Kopi Arab untuk Momen Berarti</h2>
+        <p>
+          Saudi Coffee menghadirkan pengalaman minum kopi bernuansa Arab dengan
+          suasana hangat dan sederhana.
+        </p>
+      </section>
+
+      <section class="content-section" aria-labelledby="produk-title">
+        <p class="section-label">Menu</p>
         <h2 id="produk-title">Produk Unggulan</h2>
-        <ul class="products">
-          <li>Arabian Qahwa - Rp25.000</li>
-          <li>Saudi Dates Coffee - Rp28.000</li>
-        </ul>
+        <div class="products">
+          <article class="product-card">
+            <span class="product-icon" aria-hidden="true">☕</span>
+            <h3>Arabian Qahwa</h3>
+            <p>Kopi Arab beraroma rempah dengan karakter ringan dan hangat.</p>
+            <strong>Rp25.000</strong>
+          </article>
+          <article class="product-card">
+            <span class="product-icon" aria-hidden="true">🌴</span>
+            <h3>Saudi Dates Coffee</h3>
+            <p>Perpaduan kopi dan sentuhan rasa kurma yang manis dan lembut.</p>
+            <strong>Rp28.000</strong>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="content-section contact-section"
+        aria-labelledby="kontak-title"
+      >
+        <p class="section-label">Kontak</p>
+        <h2 id="kontak-title">Kontak Singkat</h2>
+        <p>
+          Ingin bertanya tentang menu atau melakukan pemesanan? Hubungi Saudi
+          Coffee melalui kanal berikut.
+        </p>
+        <address>
+          Pekalongan, Jawa Tengah<br />
+          WhatsApp: <a href="https://wa.me/6281234567890">0812-3456-7890</a
+          ><br />
+          Instagram:
+          <a href="https://instagram.com/" target="_blank" rel="noopener"
+            >Saudi Coffee</a
+          >
+        </address>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2026 Saudi Coffee. Website UMKM untuk tugas Pemrograman Web 1.
+        </p>
+      </div>
+    </footer>
+
     <script src="js/script.js"></script>
   </body>
 </html>

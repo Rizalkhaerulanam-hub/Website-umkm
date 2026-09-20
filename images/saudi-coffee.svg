@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustrasi Saudi Coffee</title>
+  <desc id="desc">Cangkir kopi Arab berwarna hijau dengan aksen emas dan beberapa kurma.</desc>
+  <rect width="500" height="380" rx="32" fill="#f6f0e8"/>
+  <ellipse cx="240" cy="292" rx="150" ry="28" fill="#d9cdbd"/>
+  <path d="M120 145h230v100c0 48-40 86-90 86h-50c-50 0-90-38-90-86z" fill="#1f4b3e"/>
+  <path d="M350 170h35c34 0 55 23 55 51s-21 51-55 51h-35" fill="none" stroke="#1f4b3e" stroke-width="22"/>
+  <ellipse cx="235" cy="145" rx="115" ry="30" fill="#d4af37"/>
+  <ellipse cx="235" cy="145" rx="95" ry="21" fill="#5a3521"/>
+  <path d="M170 82c-12-24 8-36-2-55M220 84c-10-25 12-36 0-58M270 84c-8-25 12-38 2-58" fill="none" stroke="#c9b6a0" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="390" cy="285" rx="42" ry="25" fill="#8b5a2b"/>
+  <ellipse cx="430" cy="300" rx="42" ry="25" fill="#9d6935"/>
+  <circle cx="100" cy="90" r="7" fill="#d4af37"/>
+  <circle cx="420" cy="85" r="7" fill="#d4af37"/>
+</svg>
