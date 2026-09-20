@@ -239,3 +239,151 @@ address {
     width: min(100% - 28px, 920px);
   }
 }
+/* ================================
+   P03 - Katalog Produk
+   ================================ */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fffaf4;
+}
+
+caption {
+  margin-bottom: 12px;
+  color: #1f4b3e;
+  font-weight: 800;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  border: 1px solid #dfd0bd;
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  color: #fff;
+  background: #1f4b3e;
+  font-weight: 800;
+}
+
+tbody th {
+  color: #7a531e;
+  background: #f6f0e8;
+  font-weight: 800;
+}
+
+tbody tr:nth-child(even) td {
+  background: #f6f0e8;
+}
+
+tbody tr:hover td,
+tbody tr:hover th {
+  background: #eee3d4;
+}
+
+/* ================================
+   P03 - Figure & Figcaption
+   ================================ */
+
+figure {
+  margin: 24px 0;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid #dfd0bd;
+  background: #f6f0e8;
+}
+
+figcaption {
+  margin-top: 10px;
+  color: #7a531e;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* ================================
+   P03 - Galeri
+   ================================ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid figure {
+  margin: 0;
+  padding: 16px;
+  background: #f6f0e8;
+  border: 1px solid #dfd0bd;
+  border-radius: 16px;
+}
+
+.gallery-grid figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* ================================
+   P03 - Audio & Video
+   ================================ */
+
+audio,
+video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 16px;
+}
+
+video {
+  border-radius: 16px;
+  background: #1f4b3e;
+}
+
+.media-note {
+  margin-top: 10px;
+  color: #7a531e;
+  font-size: 0.9rem;
+}
+
+/* ================================
+   P03 - Responsive
+   ================================ */
+
+@media (max-width: 700px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+  }
+}
