@@ -12,6 +12,15 @@ body {
   background: #f6f0e8;
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.6;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.page {
+  padding: 32px 0 48px;
+
+  flex: 1;
 }
 
 a {
@@ -385,5 +394,114 @@ video {
   th,
   td {
     padding: 12px;
+  }
+}
+
+/* ================================
+   P04 - FORM KONTAK
+   ================================ */
+
+.form-group {
+  margin-top: 20px;
+}
+
+.form-group label,
+fieldset legend {
+  display: block;
+  margin-bottom: 8px;
+  color: #1f4b3e;
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  color: #2f2118;
+  background: #fff;
+  font: inherit;
+  border: 1px solid #d9cdbd;
+  border-radius: 10px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #1f4b3e;
+  outline: 3px solid rgba(212, 175, 55, 0.35);
+  outline-offset: 2px;
+}
+
+input:invalid:not(:placeholder-shown),
+select:invalid,
+textarea:invalid:not(:placeholder-shown) {
+  border-color: #a94442;
+}
+
+fieldset {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #dfd0bd;
+  border-radius: 14px;
+  background: #f6f0e8;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.radio-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #2f2118;
+  font-weight: 600;
+}
+
+.radio-group input {
+  width: auto;
+}
+
+.optional {
+  color: #7a531e;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+form button[type="submit"] {
+  margin-top: 24px;
+}
+
+.form-result {
+  margin-top: 24px;
+  padding: 20px;
+  background: #f6f0e8;
+  border: 1px solid #d4af37;
+  border-radius: 14px;
+}
+
+.form-result h2 {
+  margin-top: 0;
+  color: #1f4b3e;
+}
+
+.form-result.error {
+  color: #a94442;
+  border-color: #a94442;
+}
+
+@media (max-width: 700px) {
+  .radio-group {
+    flex-direction: column;
+    gap: 10px;
   }
 }

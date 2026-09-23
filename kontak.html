@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="description"
+      content="Form kontak Saudi Coffee - hubungi kami untuk informasi produk dan pemesanan."
+    />
+
+    <title>Kontak - Saudi Coffee</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="js/form.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Saudi Coffee - Beranda">
+          <span class="brand-mark" aria-hidden="true">☕</span>
+          <span>Saudi Coffee</span>
+        </a>
+
+        <nav aria-label="Navigasi utama">
+          <a href="index.html">Beranda</a>
+          <a href="tentang.html">Tentang Kami</a>
+          <a href="produk.html">Produk</a>
+          <a href="galeri.html">Galeri</a>
+          <a href="kontak.html" aria-current="page">Kontak</a>
+          <a href="index.html#profil">Profil</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="content-section" aria-labelledby="kontak-title">
+        <p class="section-label">Kontak</p>
+
+        <h1 id="kontak-title">Hubungi Saudi Coffee</h1>
+
+        <p>
+          Silakan isi formulir berikut untuk bertanya mengenai produk,
+          pemesanan, atau informasi lainnya.
+        </p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="nama">Nama lengkap</label>
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              required
+              minlength="3"
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="telepon">
+              Nomor WhatsApp
+              <span class="optional">(opsional)</span>
+            </label>
+
+            <input
+              type="tel"
+              id="telepon"
+              name="telepon"
+              autocomplete="tel"
+              placeholder="0812-3456-7890"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="paket">Paket yang diminati</label>
+
+            <select id="paket" name="paket" required>
+              <option value="">-- Pilih paket --</option>
+              <option value="Arabian Qahwa">Arabian Qahwa</option>
+              <option value="Saudi Dates Coffee">Saudi Dates Coffee</option>
+              <option value="Arabian Coffee Tester">
+                Arabian Coffee Tester
+              </option>
+              <option value="Paket Keluarga Saudi">Paket Keluarga Saudi</option>
+            </select>
+          </div>
+
+          <fieldset>
+            <legend>Topik pertanyaan</legend>
+
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="topik" value="Produk" required />
+                Produk
+              </label>
+
+              <label>
+                <input type="radio" name="topik" value="Pemesanan" />
+                Pemesanan
+              </label>
+
+              <label>
+                <input type="radio" name="topik" value="Informasi" />
+                Informasi
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-group">
+            <label for="pesan">Pesan</label>
+
+            <textarea
+              id="pesan"
+              name="pesan"
+              rows="6"
+              required
+              minlength="10"
+              placeholder="Tuliskan pertanyaan atau pesan Anda..."
+            ></textarea>
+          </div>
+
+          <fieldset>
+            <legend>Preferensi waktu dihubungi</legend>
+
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="waktu" value="Pagi" />
+                Pagi
+              </label>
+
+              <label>
+                <input type="radio" name="waktu" value="Siang" />
+                Siang
+              </label>
+
+              <label>
+                <input type="radio" name="waktu" value="Sore" />
+                Sore
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit">Kirim Pesan</button>
+        </form>
+
+        <div id="formResult" class="form-result" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2026 Saudi Coffee. Website UMKM untuk tugas Pemrograman Web 1.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
