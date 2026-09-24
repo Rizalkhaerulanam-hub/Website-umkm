@@ -1,67 +1,22 @@
-const contactForm = document.querySelector("#contactForm");
-const formResult = document.querySelector("#formResult");
+// 1. Mengambil elemen berdasarkan ID yang baru (sesuai HTML dosen)
+const form = document.querySelector("#form-kontak");
+const preview = document.querySelector("#preview");
 
-if (contactForm && formResult) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+// 2. Menjalankan fungsi saat tombol Kirim ditekan
+form.addEventListener("submit", (event) => {
+  // Mencegah halaman me-refresh otomatis
+  event.preventDefault();
 
-    if (!contactForm.checkValidity()) {
-      formResult.textContent = "Mohon lengkapi semua field yang wajib diisi.";
-      formResult.classList.add("error");
+  // 3. Mengambil data dari form
+  const data = new FormData(form);
 
-      contactForm.reportValidity();
-      return;
-    }
-
-    const formData = new FormData(contactForm);
-
-    const nama = formData.get("nama");
-    const email = formData.get("email");
-    const telepon = formData.get("telepon");
-    const paket = formData.get("paket");
-    const topik = formData.get("topik");
-    const pesan = formData.get("pesan");
-    const waktu = formData.get("waktu");
-
-    formResult.classList.remove("error");
-
-    formResult.innerHTML = `
-      <h2>Pesan berhasil disiapkan</h2>
-
-      <p>
-        Terima kasih, <strong>${nama}</strong>.
-      </p>
-
-      <p>
-        Email: <strong>${email}</strong>
-      </p>
-
-      <p>
-        WhatsApp:
-        <strong>${telepon || "Tidak diisi"}</strong>
-      </p>
-
-      <p>
-        Paket:
-        <strong>${paket}</strong>
-      </p>
-
-      <p>
-        Topik:
-        <strong>${topik}</strong>
-      </p>
-
-      <p>
-        Waktu:
-        <strong>${waktu || "Tidak dipilih"}</strong>
-      </p>
-
-      <p>
-        Pesan:
-        <strong>${pesan}</strong>
-      </p>
-    `;
-
-    contactForm.reset();
-  });
-}
+  // 4. Menampilkan data ke dalam kotak <pre>
+  // menggunakan .join("\n") untuk memberikan jarak (Enter) antar baris
+  preview.textContent = [
+    "Nama: " + data.get("nama"),
+    "Email: " + data.get("email"),
+    "Paket: " + data.get("paket"),
+    "Topik: " + data.get("topik"),
+    "Pesan: " + data.get("pesan"),
+  ].join("\n");
+});

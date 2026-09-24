@@ -401,107 +401,103 @@ video {
    P04 - FORM KONTAK
    ================================ */
 
-.form-group {
+form#form-kontak,
+pre#preview {
+  background: white;
+  border: 1px solid #dfd0bd; /* Garis batas warna krem */
+  border-radius: 16px;
+  padding: 18px;
   margin-top: 20px;
 }
 
-.form-group label,
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field label,
 fieldset legend {
-  display: block;
-  margin-bottom: 8px;
-  color: #1f4b3e;
+  color: #1f4b3e; /* Teks label warna hijau tua */
   font-weight: 800;
 }
 
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 12px 14px;
-  color: #2f2118;
-  background: #fff;
+.field input,
+.field select,
+.field textarea,
+fieldset input {
   font: inherit;
+  padding: 12px;
   border: 1px solid #d9cdbd;
-  border-radius: 10px;
+  border-radius: 8px;
+  color: #2f2118;
+  width: 100%;
 }
 
-textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
+/* Efek saat kotak isian sedang diketik (Fokus) */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
   border-color: #1f4b3e;
-  outline: 3px solid rgba(212, 175, 55, 0.35);
+  outline: 3px solid rgba(212, 175, 55, 0.35); /* Garis luar warna emas pudar */
   outline-offset: 2px;
 }
 
-input:invalid:not(:placeholder-shown),
-select:invalid,
-textarea:invalid:not(:placeholder-shown) {
-  border-color: #a94442;
-}
-
 fieldset {
-  margin-top: 24px;
-  padding: 20px;
+  display: grid;
+  gap: 8px;
+  margin: 0 0 14px;
   border: 1px solid #dfd0bd;
-  border-radius: 14px;
-  background: #f6f0e8;
+  border-radius: 12px;
+  background: #f6f0e8; /* Latar belakang krem muda */
+  padding: 16px;
 }
 
-.radio-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.radio-group label {
+fieldset label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 0;
   color: #2f2118;
   font-weight: 600;
 }
 
-.radio-group input {
-  width: auto;
+/* Mengatur ukuran tombol bundar khas Saudi Coffee */
+form#form-kontak button[type="submit"] {
+  cursor: pointer;
+  background: #d4af37; /* Latar emas */
+  color: #1f4b3e; /* Teks hijau tua */
+  font-weight: bold;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 999px;
+  margin-top: 10px;
+  width: 100%; /* Tombol memenuhi lebar form */
+  transition: background-color 0.3s;
 }
 
-.optional {
-  color: #7a531e;
-  font-size: 0.85rem;
-  font-weight: 400;
+/* Efek saat mouse diarahkan ke tombol */
+form#form-kontak button[type="submit"]:hover {
+  background: #1f4b3e; /* Berubah hijau tua */
+  color: #d4af37; /* Teks berubah emas */
 }
 
-form button[type="submit"] {
-  margin-top: 24px;
-}
-
-.form-result {
-  margin-top: 24px;
-  padding: 20px;
-  background: #f6f0e8;
-  border: 1px solid #d4af37;
-  border-radius: 14px;
-}
-
-.form-result h2 {
-  margin-top: 0;
+/* Tampilan Kotak Hasil (Preview) dari Dosen */
+#preview-title {
+  margin-top: 40px;
   color: #1f4b3e;
 }
 
-.form-result.error {
-  color: #a94442;
-  border-color: #a94442;
+pre#preview {
+  background: #f6f0e8;
+  color: #2f2118;
+  font-family: inherit; /* Menyamakan font dengan keseluruhan website */
+  font-weight: bold;
+  white-space: pre-wrap; /* Memastikan teks panjang turun ke bawah, tidak melebar */
 }
 
-@media (max-width: 700px) {
-  .radio-group {
-    flex-direction: column;
-    gap: 10px;
-  }
+/* Mengembalikan ukuran radio button ke ukuran aslinya */
+fieldset input[type="radio"] {
+  width: auto;
+  margin-right: 4px;
+  cursor: pointer;
 }
