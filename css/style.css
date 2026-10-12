@@ -1,3 +1,25 @@
+:root {
+  --color-primary: #1f4b3e;
+  --color-primary-strong: #15372d;
+  --color-text: #2f2118;
+  --color-muted: #7a6352;
+  --color-surface: #fffaf4;
+  --color-surface-alt: #f6f0e8;
+  --color-border: #dfd0bd;
+  --color-focus: #b8860b;
+  --color-accent: #d4af37;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --font-body: Georgia, "Times New Roman", serif;
+  --line-height-body: 1.6;
+  --content-width: 920px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,10 +30,11 @@ html {
 
 body {
   margin: 0;
-  color: #2f2118;
-  background: #f6f0e8;
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+  font-family: var(--font-body);
+  line-height: var(--line-height-body);
 
   display: flex;
   flex-direction: column;
@@ -24,12 +47,12 @@ body {
 }
 
 a {
-  color: #1f4b3e;
+  color: var(--color-primary);
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid #d4af37;
+  outline: 3px solid var(--color-focus);
   outline-offset: 4px;
   border-radius: 6px;
 }
@@ -62,7 +85,7 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #1f4b3e;
+  color: var(--color-primary);
   font-weight: 800;
   text-decoration: none;
 }
@@ -73,7 +96,7 @@ button:focus-visible {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: #1f4b3e;
+  background: var(--color-primary);
   color: #d4af37;
 }
 
@@ -105,7 +128,7 @@ nav a[aria-current="page"] {
   gap: 30px;
   padding: 40px;
   color: white;
-  background: #1f4b3e;
+  background: var(--color-primary);
   border-radius: 24px;
   border: 4px solid #d4af37;
 }
@@ -143,7 +166,7 @@ nav a[aria-current="page"] {
 
 button {
   padding: 12px 18px;
-  color: #1f4b3e;
+  color: var(--color-primary);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -161,14 +184,14 @@ button {
 .content-section {
   margin-top: 28px;
   padding: 30px;
-  background: #fffaf4;
-  border: 1px solid #e2d7c8;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
 }
 
 .content-section h2 {
   margin-top: 0;
-  color: #1f4b3e;
+  color: var(--color-primary);
 }
 
 .content-section h3 {
@@ -187,9 +210,9 @@ button {
 
 .product-card {
   padding: 22px;
-  border-radius: 16px;
-  background: #f6f0e8;
-  border: 1px solid #dfd0bd;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
 }
 
 .product-card h3 {
@@ -201,7 +224,7 @@ button {
 }
 
 .product-card strong {
-  color: #1f4b3e;
+  color: var(--color-primary);
 }
 
 address {
@@ -215,7 +238,7 @@ address {
 .site-footer {
   padding: 26px 0;
   color: #fff;
-  background: #1f4b3e;
+  background: var(--color-primary);
   text-align: center;
 }
 
@@ -261,12 +284,12 @@ address {
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #fffaf4;
+  background: var(--color-surface);
 }
 
 caption {
   margin-bottom: 12px;
-  color: #1f4b3e;
+  color: var(--color-primary);
   font-weight: 800;
   text-align: left;
 }
@@ -274,25 +297,25 @@ caption {
 th,
 td {
   padding: 14px 16px;
-  border: 1px solid #dfd0bd;
+  border: 1px solid var(--color-border);
   text-align: left;
   vertical-align: top;
 }
 
 thead th {
   color: #fff;
-  background: #1f4b3e;
+  background: var(--color-primary);
   font-weight: 800;
 }
 
 tbody th {
   color: #7a531e;
-  background: #f6f0e8;
+  background: var(--color-surface-alt);
   font-weight: 800;
 }
 
 tbody tr:nth-child(even) td {
-  background: #f6f0e8;
+  background: var(--color-surface-alt);
 }
 
 tbody tr:hover td,
@@ -313,9 +336,9 @@ figure img {
   width: 100%;
   max-width: 100%;
   height: auto;
-  border-radius: 16px;
-  border: 1px solid #dfd0bd;
-  background: #f6f0e8;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
 }
 
 figcaption {
@@ -338,9 +361,9 @@ figcaption {
 .gallery-grid figure {
   margin: 0;
   padding: 16px;
-  background: #f6f0e8;
-  border: 1px solid #dfd0bd;
-  border-radius: 16px;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .gallery-grid figure img {
@@ -364,8 +387,8 @@ video {
 }
 
 video {
-  border-radius: 16px;
-  background: #1f4b3e;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
 }
 
 .media-note {
@@ -404,8 +427,8 @@ video {
 form#form-kontak,
 pre#preview {
   background: white;
-  border: 1px solid #dfd0bd; /* Garis batas warna krem */
-  border-radius: 16px;
+  border: 1px solid var(--color-border); /* Garis batas warna krem */
+  border-radius: var(--radius-md);
   padding: 18px;
   margin-top: 20px;
 }
@@ -418,7 +441,7 @@ pre#preview {
 
 .field label,
 fieldset legend {
-  color: #1f4b3e; /* Teks label warna hijau tua */
+  color: var(--color-primary); /* Teks label warna hijau tua */
   font-weight: 800;
 }
 
@@ -430,15 +453,14 @@ fieldset input {
   padding: 12px;
   border: 1px solid #d9cdbd;
   border-radius: 8px;
-  color: #2f2118;
+  color: var(--color-text);
   width: 100%;
 }
 
-/* Efek saat kotak isian sedang diketik (Fokus) */
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: #1f4b3e;
+  border-color: var(--color-primary);
   outline: 3px solid rgba(212, 175, 55, 0.35); /* Garis luar warna emas pudar */
   outline-offset: 2px;
 }
@@ -447,9 +469,9 @@ fieldset {
   display: grid;
   gap: 8px;
   margin: 0 0 14px;
-  border: 1px solid #dfd0bd;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: #f6f0e8; /* Latar belakang krem muda */
+  background: var(--color-surface-alt); /* Latar belakang krem muda */
   padding: 16px;
 }
 
@@ -457,7 +479,7 @@ fieldset label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #2f2118;
+  color: var(--color-text);
   font-weight: 600;
 }
 
@@ -465,7 +487,7 @@ fieldset label {
 form#form-kontak button[type="submit"] {
   cursor: pointer;
   background: #d4af37; /* Latar emas */
-  color: #1f4b3e; /* Teks hijau tua */
+  color: var(--color-primary); /* Teks hijau tua */
   font-weight: bold;
   border: none;
   padding: 14px 24px;
@@ -475,21 +497,19 @@ form#form-kontak button[type="submit"] {
   transition: background-color 0.3s;
 }
 
-/* Efek saat mouse diarahkan ke tombol */
 form#form-kontak button[type="submit"]:hover {
-  background: #1f4b3e; /* Berubah hijau tua */
+  background: var(--color-primary); /* Berubah hijau tua */
   color: #d4af37; /* Teks berubah emas */
 }
 
-/* Tampilan Kotak Hasil (Preview) dari Dosen */
 #preview-title {
   margin-top: 40px;
-  color: #1f4b3e;
+  color: var(--color-primary);
 }
 
 pre#preview {
-  background: #f6f0e8;
-  color: #2f2118;
+  background: var(--color-surface-alt);
+  color: var(--color-text);
   font-family: inherit; /* Menyamakan font dengan keseluruhan website */
   font-weight: bold;
   white-space: pre-wrap; /* Memastikan teks panjang turun ke bawah, tidak melebar */
@@ -500,4 +520,62 @@ fieldset input[type="radio"] {
   width: auto;
   margin-right: 4px;
   cursor: pointer;
+}
+
+/* P05 — komponen konsisten, state interaktif, dan aksesibilitas */
+:where(h1, h2, h3, h4) {
+  line-height: 1.2;
+}
+p {
+  max-width: 75ch;
+}
+
+a:hover {
+  color: var(--color-primary-strong);
+}
+
+button {
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+button:hover {
+  background: var(--color-primary-strong);
+  color: var(--color-accent);
+}
+button:active {
+  transform: translateY(1px);
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+fieldset input[type="radio"],
+fieldset input[type="checkbox"] {
+  width: auto;
+  accent-color: var(--color-primary);
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: var(--color-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
