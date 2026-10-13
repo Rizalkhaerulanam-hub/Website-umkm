@@ -53,6 +53,53 @@
           pelanggan.
         </p>
 
+        <div class="layout-toolbar" aria-label="Pilihan layout katalog">
+          <button type="button" data-layout="grid" aria-pressed="true">
+            Grid
+          </button>
+          <button type="button" data-layout="flex" aria-pressed="false">
+            Flexbox
+          </button>
+        </div>
+        <p id="layoutStatus" class="layout-status" role="status">
+          Mode aktif: Grid dua dimensi
+        </p>
+
+        <section
+          id="catalog"
+          class="catalog layout-grid"
+          aria-label="Kartu produk Saudi Coffee"
+        >
+          <article class="product-card catalog-card">
+            <span class="badge">Favorit</span>
+            <h2>Arabian Qahwa</h2>
+            <p>Kopi Arab beraroma rempah dengan karakter ringan dan hangat.</p>
+            <div class="card-actions">
+              <strong>Rp25.000</strong><a href="#detail-produk">Detail</a>
+            </div>
+          </article>
+          <article class="product-card catalog-card">
+            <h2>Saudi Dates Coffee</h2>
+            <p>Perpaduan kopi dan sentuhan rasa kurma yang manis dan lembut.</p>
+            <div class="card-actions">
+              <strong>Rp28.000</strong><a href="#detail-produk">Detail</a>
+            </div>
+          </article>
+          <article class="product-card catalog-card">
+            <h2>Arabian Coffee Tester</h2>
+            <p>Ukuran tester untuk mencoba cita rasa kopi Arab.</p>
+            <div class="card-actions">
+              <strong>Rp15.000</strong><a href="#detail-produk">Detail</a>
+            </div>
+          </article>
+          <article class="product-card catalog-card">
+            <h2>Paket Keluarga Saudi</h2>
+            <p>Paket kopi untuk dinikmati bersama keluarga atau teman.</p>
+            <div class="card-actions">
+              <strong>Rp75.000</strong><a href="#detail-produk">Detail</a>
+            </div>
+          </article>
+        </section>
         <div class="table-wrapper">
           <table>
             <caption>
@@ -121,5 +168,6 @@
         </p>
       </div>
     </footer>
+    <script src="js/layout.js" defer></script>
   </body>
 </html>
