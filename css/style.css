@@ -696,3 +696,216 @@ code {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
+/*P07 — Responsive Mobile-First*/
+:root {
+  --space-page: clamp(1rem, 0.65rem + 1.8vw, 2.5rem);
+  --space-section: clamp(1rem, 0.7rem + 1.5vw, 1.875rem);
+  --content-width: 68rem;
+}
+
+html {
+  overflow-wrap: anywhere;
+}
+
+body {
+  min-width: 0;
+}
+
+.container,
+.page {
+  width: min(calc(100% - 2 * var(--space-page)), var(--content-width));
+  min-width: 0;
+}
+
+.page {
+  padding-block: clamp(1.25rem, 0.8rem + 2vw, 3rem);
+}
+
+/* Baseline mobile: navigasi, hero, katalog, dan galeri
+   menggunakan satu kolom sebelum ruang mencukupi. */
+.header-inner {
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding-block: 0.75rem;
+}
+
+nav {
+  min-width: 0;
+  max-width: 100%;
+  gap: 0.5rem 0.9rem;
+}
+
+nav a {
+  display: inline-block;
+  padding-block: 0.2rem;
+}
+
+.hero {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-section);
+  padding: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  border-width: clamp(2px, 0.35vw, 4px);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 1.35rem + 4.5vw, 4.5rem);
+  overflow-wrap: anywhere;
+}
+
+.lead {
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.15rem);
+}
+
+.hero-image {
+  width: 100%;
+  max-width: min(100%, 22rem);
+  height: auto;
+}
+
+.content-section {
+  margin-top: var(--space-section);
+  padding: clamp(1rem, 0.65rem + 1.5vw, 1.875rem);
+  min-width: 0;
+}
+
+.products,
+.gallery-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
+}
+
+.product-card,
+.catalog-card,
+.gallery-grid figure {
+  min-width: 0;
+}
+
+img,
+audio,
+video,
+svg {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+.gallery-grid figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.table-wrapper table {
+  width: 100%;
+  min-width: 43.75rem;
+}
+
+th,
+td {
+  overflow-wrap: anywhere;
+}
+
+form#form-kontak,
+pre#preview,
+.field,
+fieldset {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.field input,
+.field select,
+.field textarea,
+pre#preview {
+  min-width: 0;
+  max-width: 100%;
+}
+
+pre#preview {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* Breakpoint 42rem: kartu mulai berdampingan saat ruang
+   cukup, bukan berdasarkan nama/perangkat tertentu. */
+@media (min-width: 42rem) {
+  .header-inner {
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  nav {
+    justify-content: flex-end;
+  }
+
+  .products,
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(12rem, 0.9fr);
+  }
+
+  .compact-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.65fr);
+  }
+}
+
+/* Breakpoint 56rem: ruang cukup untuk hero dan katalog
+   tiga kolom tanpa membuat isi kartu terlalu sempit. */
+@media (min-width: 56rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  }
+
+  .compact-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.7fr);
+  }
+
+  .products,
+  .gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Pada zoom besar/layar pendek, isi tetap bisa dibaca dan
+   fokus keyboard tetap tampak. */
+@media (max-width: 30rem) {
+  .brand {
+    max-width: 100%;
+  }
+
+  nav {
+    gap: 0.35rem 0.7rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+
+  .card-actions {
+    flex-wrap: wrap;
+  }
+
+  form#form-kontak,
+  pre#preview {
+    padding: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
