@@ -696,6 +696,57 @@ code {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
+
+.js-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.js-product-card {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.js-product-card h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+}
+
+.js-product-card p {
+  margin: 0 0 var(--space-2);
+}
+
+.js-product-card .price {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.stock-badge {
+  display: inline-flex;
+  margin-block-start: var(--space-2);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.stock-badge.warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.stock-badge.empty {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
 /*P07 — Responsive Mobile-First*/
 :root {
   --space-page: clamp(1rem, 0.65rem + 1.8vw, 2.5rem);
