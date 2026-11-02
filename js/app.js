@@ -1,34 +1,14 @@
 "use strict";
 
-console.log("P09 JavaScript aktif");
-
 const namaToko = "Saudi Coffee";
-const biayakemasan = 2000;
-
-let jumlahprodukaktif = 0;
-jumlahprodukaktif = jumlahprodukaktif + 1;
-
-const produkutama = {
-  nama: "Arabian Qahwa",
-  kategori: "Kopi",
-  harga: 25000,
-  stok: 10,
-  unggulan: true,
-};
-
-console.log(produkutama.nama);
-console.log(produkutama.harga);
 
 const produkUmkm = [
-  { nama: "Arabian Qahwa", kategori: "Kopi", harga: 25000, stok: 10 },
-  { nama: "Saudi Dates Coffee", kategori: "Kopi", harga: 28000, stok: 40 },
-  {
-    nama: "Arabian Coffee Tester",
-    kategori: "Bundling",
-    harga: 15000,
-    stok: 100,
-  },
-  { nama: "Paket Keluarga Saudi", kategori: "Minuman", harga: 75000, stok: 18 },
+  { nama: "Arabika Gayo", kategori: "Kopi", harga: 85000, stok: 2 },
+  { nama: "Robusta Temanggung", kategori: "Kopi", harga: 65000, stok: 4 },
+  { nama: "Paket Seduh", kategori: "Bundling", harga: 125000, stok: 0 },
+  { nama: "Kopi Susu Saudi", kategori: "Minuman", harga: 28000, stok: 18 },
+  { nama: "Kurma Premium", kategori: "Camilan", harga: 42000, stok: 9 },
+  { nama: "Paket Keluarga", kategori: "Bundling", harga: 210000, stok: 3 },
 ];
 
 const formatRupiah = new Intl.NumberFormat("id-ID", {
@@ -60,46 +40,65 @@ function labelKategori(kategori) {
   }
 }
 
+function buatElemen(tag, className, isi) {
+  const elemen = document.createElement(tag);
+  if (className) elemen.className = className;
+  elemen.textContent = isi;
+  return elemen;
+}
+
+function buatKartuProduk(produk) {
+  const status = statusStok(produk.stok);
+  const labelAksi = produk.stok > 0 ? "Siap dipesan" : "Hubungi admin";
+  const kartu = document.createElement("article");
+  kartu.className = "catalog-card js-product-card";
+
+  kartu.append(
+    buatElemen("h2", "", produk.nama),
+    buatElemen("p", "", labelKategori(produk.kategori)),
+    buatElemen("p", "price", formatRupiah.format(produk.harga)),
+  );
+
+  const badgeStok = buatElemen("span", "stock-badge", status.label);
+  if (status.className) badgeStok.classList.add(status.className);
+  kartu.append(badgeStok, buatElemen("p", "product-action", labelAksi));
+
+  return kartu;
+}
+
 function renderProduk() {
-  const grid = document.querySelector("#produk-dinamis");
+  const targetProduk = document.querySelector("#produk-dinamis");
   const ringkasan = document.querySelector("#produk-ringkasan");
 
-  if (!grid || !ringkasan) {
+  // app.js hanya dipanggil di produk.html; pengecekan ini menjaga halaman lain.
+  if (!targetProduk || !ringkasan) {
+    console.warn("Target katalog P09 tidak ditemukan pada halaman ini.");
     return;
   }
 
   let jumlahTersedia = 0;
-  let markup = "";
+  targetProduk.replaceChildren();
 
   for (const produk of produkUmkm) {
-    const status = statusStok(produk.stok);
-    const kategori = labelKategori(produk.kategori);
-    const labelAksi = produk.stok > 0 ? "Siap dipesan" : "Hubungi admin";
-
     if (produk.stok > 0) {
-      jumlahTersedia = jumlahTersedia + 1;
+      jumlahTersedia += 1;
     }
-
-    markup += `
-      <article class="js-product-card">
-        <h3>${produk.nama}</h3>
-        <p>${kategori}</p>
-        <p class="price">${formatRupiah.format(produk.harga)}</p>
-        <span class="stock-badge ${status.className}">${status.label}</span>
-        <p>${labelAksi}</p>
-      </article>
-    `;
+    targetProduk.append(buatKartuProduk(produk));
   }
 
-  grid.innerHTML = markup;
-  ringkasan.textContent = `${jumlahTersedia} produk tersedia dari ${produkUmkm.length} data.`;
+  ringkasan.textContent = `${namaToko}: ${jumlahTersedia} produk memiliki stok dari ${produkUmkm.length} produk.`;
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", renderProduk);
-} else {
-  renderProduk();
-}
-
-console.log(statusStok(produkUmkm[0].stok));
+// Bukti data dan pengujian conditional dapat dilihat melalui DevTools Console.
+console.log("P09 JavaScript aktif —", namaToko);
 console.table(produkUmkm);
+console.table(
+  produkUmkm.map((produk) => ({
+    nama: produk.nama,
+    stok: produk.stok,
+    status: statusStok(produk.stok).label,
+  })),
+);
+
+// Script menggunakan atribut defer, sehingga DOM sudah selesai diparsing.
+renderProduk();

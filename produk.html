@@ -65,41 +65,19 @@
           Mode aktif: Grid dua dimensi
         </p>
 
-        <section
-          id="catalog"
-          class="catalog layout-grid"
-          aria-label="Kartu produk Saudi Coffee"
+        <p
+          id="produk-ringkasan"
+          class="layout-status"
+          role="status"
+          aria-live="polite"
         >
-          <article class="product-card catalog-card">
-            <span class="badge">Favorit</span>
-            <h2>Arabian Qahwa</h2>
-            <p>Kopi Arab beraroma rempah dengan karakter ringan dan hangat.</p>
-            <div class="card-actions">
-              <strong>Rp25.000</strong><a href="#detail-produk">Detail</a>
-            </div>
-          </article>
-          <article class="product-card catalog-card">
-            <h2>Saudi Dates Coffee</h2>
-            <p>Perpaduan kopi dan sentuhan rasa kurma yang manis dan lembut.</p>
-            <div class="card-actions">
-              <strong>Rp28.000</strong><a href="#detail-produk">Detail</a>
-            </div>
-          </article>
-          <article class="product-card catalog-card">
-            <h2>Arabian Coffee Tester</h2>
-            <p>Ukuran tester untuk mencoba cita rasa kopi Arab.</p>
-            <div class="card-actions">
-              <strong>Rp15.000</strong><a href="#detail-produk">Detail</a>
-            </div>
-          </article>
-          <article class="product-card catalog-card">
-            <h2>Paket Keluarga Saudi</h2>
-            <p>Paket kopi untuk dinikmati bersama keluarga atau teman.</p>
-            <div class="card-actions">
-              <strong>Rp75.000</strong><a href="#detail-produk">Detail</a>
-            </div>
-          </article>
-        </section>
+          Memuat daftar produk Saudi Coffee...
+        </p>
+        <section
+          id="produk-dinamis"
+          class="catalog layout-grid js-product-grid"
+          aria-label="Kartu produk Saudi Coffee"
+        ></section>
         <div class="table-wrapper">
           <table>
             <caption>
@@ -118,42 +96,46 @@
 
             <tbody>
               <tr>
-                <th scope="row">Arabian Qahwa</th>
-                <td>Kopi Arab</td>
-                <td>Rp25.000</td>
-                <td>Tersedia</td>
-                <td>
-                  Kopi Arab beraroma rempah dengan karakter ringan dan hangat.
-                </td>
+                <th scope="row">Arabika Gayo</th>
+                <td>Kopi</td>
+                <td>Rp85.000</td>
+                <td>Stok terbatas (2)</td>
+                <td>Produk kopi pilihan.</td>
               </tr>
-
               <tr>
-                <th scope="row">Saudi Dates Coffee</th>
-                <td>Kopi Kurma</td>
+                <th scope="row">Robusta Temanggung</th>
+                <td>Kopi</td>
+                <td>Rp65.000</td>
+                <td>Stok terbatas (4)</td>
+                <td>Produk kopi pilihan.</td>
+              </tr>
+              <tr>
+                <th scope="row">Paket Seduh</th>
+                <td>Bundling</td>
+                <td>Rp125.000</td>
+                <td>Habis (0)</td>
+                <td>Paket hemat; hubungi admin.</td>
+              </tr>
+              <tr>
+                <th scope="row">Kopi Susu Saudi</th>
+                <td>Minuman</td>
                 <td>Rp28.000</td>
-                <td>Tersedia</td>
-                <td>
-                  Perpaduan kopi dan sentuhan rasa kurma yang manis dan lembut.
-                </td>
+                <td>Tersedia (18)</td>
+                <td>Produk UMKM.</td>
               </tr>
-
               <tr>
-                <th scope="row">Arabian Coffee Tester</th>
-                <td>Tester</td>
-                <td>Rp15.000</td>
-                <td>Tersedia</td>
-                <td>
-                  Ukuran tester untuk pelanggan yang ingin mencoba cita rasa
-                  kopi Arab.
-                </td>
+                <th scope="row">Kurma Premium</th>
+                <td>Camilan</td>
+                <td>Rp42.000</td>
+                <td>Tersedia (9)</td>
+                <td>Produk UMKM.</td>
               </tr>
-
               <tr>
-                <th scope="row">Paket Keluarga Saudi</th>
-                <td>Paket</td>
-                <td>Rp75.000</td>
-                <td>Tersedia</td>
-                <td>Paket kopi untuk dinikmati bersama keluarga atau teman.</td>
+                <th scope="row">Paket Keluarga</th>
+                <td>Bundling</td>
+                <td>Rp210.000</td>
+                <td>Stok terbatas (3)</td>
+                <td>Paket hemat.</td>
               </tr>
             </tbody>
           </table>
@@ -169,5 +151,6 @@
       </div>
     </footer>
     <script src="js/layout.js" defer></script>
+    <script src="js/app.js" defer></script>
   </body>
 </html>
