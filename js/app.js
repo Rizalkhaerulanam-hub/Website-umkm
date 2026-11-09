@@ -42,8 +42,13 @@ function labelKategori(kategori) {
 
 function buatElemen(tag, className, isi) {
   const elemen = document.createElement(tag);
-  if (className) elemen.className = className;
+
+  if (className) {
+    elemen.className = className;
+  }
+
   elemen.textContent = isi;
+
   return elemen;
 }
 
@@ -60,7 +65,10 @@ function buatKartuProduk(produk) {
   );
 
   const badgeStok = buatElemen("span", "stock-badge", status.label);
-  if (status.className) badgeStok.classList.add(status.className);
+  if (status.className) {
+    badgeStok.classList.add(status.className);
+  }
+
   kartu.append(badgeStok, buatElemen("p", "product-action", labelAksi));
 
   return kartu;
@@ -70,35 +78,64 @@ function renderProduk() {
   const targetProduk = document.querySelector("#produk-dinamis");
   const ringkasan = document.querySelector("#produk-ringkasan");
 
-  // app.js hanya dipanggil di produk.html; pengecekan ini menjaga halaman lain.
   if (!targetProduk || !ringkasan) {
     console.warn("Target katalog P09 tidak ditemukan pada halaman ini.");
     return;
   }
 
-  let jumlahTersedia = 0;
-  targetProduk.replaceChildren();
+  const produkTersedia = produkUmkm.filter((produk) => produk.stok > 0);
 
-  for (const produk of produkUmkm) {
-    if (produk.stok > 0) {
-      jumlahTersedia += 1;
-    }
-    targetProduk.append(buatKartuProduk(produk));
-  }
+  const kartuProduk = produkTersedia.map((produk) => buatKartuProduk(produk));
 
-  ringkasan.textContent = `${namaToko}: ${jumlahTersedia} produk memiliki stok dari ${produkUmkm.length} produk.`;
+  const produkUnggulan = produkUmkm.find(
+    (produk) => produk.nama === "Arabika Gayo",
+  );
+
+  targetProduk.replaceChildren(...kartuProduk);
+
+  ringkasan.textContent = `${namaToko}: ${produkTersedia.length} produk memiliki stok dari ${produkUmkm.length} produk.`;
+
+  produkUmkm.forEach((produk) => {
+    console.log(
+      produk.nama,
+      "| Stok:",
+      produk.stok,
+      "| Status:",
+      statusStok(produk.stok).label,
+    );
+  });
+
+  console.log("Produk unggulan:", produkUnggulan);
+
+  console.table(
+    produkUmkm.map((produk) => ({
+      nama: produk.nama,
+      kategori: produk.kategori,
+      harga: formatRupiah.format(produk.harga),
+      stok: produk.stok,
+      status: statusStok(produk.stok).label,
+    })),
+  );
+
+  console.log("Nama UMKM:", namaToko);
+  console.log("Jumlah seluruh produk:", produkUmkm.length);
+  console.log("Jumlah produk tersedia:", produkTersedia.length);
+  console.log(
+    "Jumlah produk habis:",
+    produkUmkm.length - produkTersedia.length,
+  );
+  console.log("Kartu produk ditampilkan:", kartuProduk.length);
 }
 
-// Bukti data dan pengujian conditional dapat dilihat melalui DevTools Console.
-console.log("P09 JavaScript aktif —", namaToko);
-console.table(produkUmkm);
-console.table(
-  produkUmkm.map((produk) => ({
-    nama: produk.nama,
-    stok: produk.stok,
-    status: statusStok(produk.stok).label,
-  })),
-);
+console.log("P10 JavaScript aktif —", namaToko);
 
-// Script menggunakan atribut defer, sehingga DOM sudah selesai diparsing.
+console.log("Pengujian format Rupiah:", formatRupiah.format(85000));
+
+console.table([
+  { stok: 0, hasil: statusStok(0).label },
+  { stok: 3, hasil: statusStok(3).label },
+  { stok: 10, hasil: statusStok(10).label },
+]);
+
+console.table(produkUmkm);
 renderProduk();
