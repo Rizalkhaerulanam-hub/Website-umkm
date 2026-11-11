@@ -9,6 +9,7 @@
     />
     <title>Produk - Saudi Coffee</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
   </head>
 
   <body>
@@ -19,7 +20,19 @@
           <span>Saudi Coffee</span>
         </a>
 
-        <nav aria-label="Navigasi utama">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Buka menu navigasi"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav id="primary-nav" class="site-nav" aria-label="Navigasi utama">
           <a href="index.html">Beranda</a>
           <a href="tentang.html">Tentang Kami</a>
           <a href="produk.html" aria-current="page">Produk</a>
