@@ -17,15 +17,13 @@ const formatRupiah = new Intl.NumberFormat("id-ID", {
   maximumFractionDigits: 0,
 });
 
+const targetProduk = document.querySelector("#produk-dinamis");
+const ringkasanProduk = document.querySelector("#produk-ringkasan");
+const tombolFilter = document.querySelectorAll("[data-filter]");
+
 function statusStok(stok) {
-  if (stok === 0) {
-    return { label: "Habis", className: "empty" };
-  }
-
-  if (stok <= 5) {
-    return { label: "Stok terbatas", className: "warning" };
-  }
-
+  if (stok === 0) return { label: "Habis", className: "empty" };
+  if (stok <= 5) return { label: "Stok terbatas", className: "warning" };
   return { label: "Tersedia", className: "" };
 }
 
@@ -35,107 +33,106 @@ function labelKategori(kategori) {
       return "Produk kopi pilihan";
     case "Bundling":
       return "Paket hemat";
+    case "Minuman":
+      return "Minuman khas Saudi Coffee";
+    case "Camilan":
+      return "Camilan pilihan";
     default:
       return "Produk UMKM";
   }
 }
 
-function buatElemen(tag, className, isi) {
-  const elemen = document.createElement(tag);
-
-  if (className) {
-    elemen.className = className;
-  }
-
-  elemen.textContent = isi;
-
-  return elemen;
-}
-
-function buatKartuProduk(produk) {
-  const status = statusStok(produk.stok);
-  const labelAksi = produk.stok > 0 ? "Siap dipesan" : "Hubungi admin";
+function buatElemenProduk(produk) {
   const kartu = document.createElement("article");
   kartu.className = "catalog-card js-product-card";
 
-  kartu.append(
-    buatElemen("h2", "", produk.nama),
-    buatElemen("p", "", labelKategori(produk.kategori)),
-    buatElemen("p", "price", formatRupiah.format(produk.harga)),
-  );
+  const judul = document.createElement("h2");
+  judul.textContent = produk.nama;
+  const kategori = document.createElement("p");
+  kategori.textContent = labelKategori(produk.kategori);
+  const harga = document.createElement("p");
+  harga.className = "price";
+  harga.textContent = formatRupiah.format(produk.harga);
+  const stok = document.createElement("span");
+  const infoStok = statusStok(produk.stok);
+  stok.className = "stock-badge";
+  stok.textContent = `${infoStok.label} (${produk.stok})`;
+  if (infoStok.className) stok.classList.add(infoStok.className);
+  const aksi = document.createElement("p");
+  aksi.className = "product-action";
+  aksi.textContent = produk.stok > 0 ? "Siap dipesan" : "Hubungi admin";
 
-  const badgeStok = buatElemen("span", "stock-badge", status.label);
-  if (status.className) {
-    badgeStok.classList.add(status.className);
-  }
-
-  kartu.append(badgeStok, buatElemen("p", "product-action", labelAksi));
-
+  kartu.append(judul, kategori, harga, stok, aksi);
   return kartu;
 }
 
-function renderProduk() {
-  const targetProduk = document.querySelector("#produk-dinamis");
-  const ringkasan = document.querySelector("#produk-ringkasan");
+function buatEmptyState(kategori) {
+  const pesan = document.createElement("p");
+  pesan.className = "empty-state";
+  pesan.setAttribute("role", "status");
+  pesan.textContent =
+    kategori === "Semua"
+      ? "Belum ada produk yang dapat ditampilkan."
+      : `Belum ada produk untuk kategori ${kategori}.`;
+  return pesan;
+}
 
-  if (!targetProduk || !ringkasan) {
-    console.warn("Target katalog P09 tidak ditemukan pada halaman ini.");
+function renderProduk(kategoriAktif = "Semua") {
+  if (!targetProduk || !ringkasanProduk) {
+    console.warn(
+      "Target #produk-dinamis atau #produk-ringkasan tidak ditemukan.",
+    );
     return;
   }
 
-  const produkTersedia = produkUmkm.filter((produk) => produk.stok > 0);
+  const hasilFilter =
+    kategoriAktif === "Semua"
+      ? produkUmkm
+      : produkUmkm.filter((produk) => produk.kategori === kategoriAktif);
 
-  const kartuProduk = produkTersedia.map((produk) => buatKartuProduk(produk));
+  targetProduk.replaceChildren();
 
-  const produkUnggulan = produkUmkm.find(
-    (produk) => produk.nama === "Arabika Gayo",
-  );
+  if (hasilFilter.length === 0) {
+    targetProduk.append(buatEmptyState(kategoriAktif));
+  } else {
+    hasilFilter.forEach((produk) => {
+      targetProduk.append(buatElemenProduk(produk));
+    });
+  }
 
-  targetProduk.replaceChildren(...kartuProduk);
+  ringkasanProduk.textContent =
+    kategoriAktif === "Semua"
+      ? `Menampilkan ${hasilFilter.length} dari ${produkUmkm.length} produk Saudi Coffee.`
+      : `Kategori ${kategoriAktif}: ${hasilFilter.length} produk ditemukan.`;
 
-  ringkasan.textContent = `${namaToko}: ${produkTersedia.length} produk memiliki stok dari ${produkUmkm.length} produk.`;
-
-  produkUmkm.forEach((produk) => {
-    console.log(
-      produk.nama,
-      "| Stok:",
-      produk.stok,
-      "| Status:",
-      statusStok(produk.stok).label,
-    );
-  });
-
-  console.log("Produk unggulan:", produkUnggulan);
-
-  console.table(
-    produkUmkm.map((produk) => ({
-      nama: produk.nama,
-      kategori: produk.kategori,
-      harga: formatRupiah.format(produk.harga),
-      stok: produk.stok,
-      status: statusStok(produk.stok).label,
-    })),
-  );
-
-  console.log("Nama UMKM:", namaToko);
-  console.log("Jumlah seluruh produk:", produkUmkm.length);
-  console.log("Jumlah produk tersedia:", produkTersedia.length);
   console.log(
-    "Jumlah produk habis:",
-    produkUmkm.length - produkTersedia.length,
+    `Filter ${kategoriAktif}: ${hasilFilter.length} produk ditampilkan.`,
   );
-  console.log("Kartu produk ditampilkan:", kartuProduk.length);
 }
 
-console.log("P10 JavaScript aktif —", namaToko);
+function aturFilterAktif(tombolDipilih) {
+  tombolFilter.forEach((tombol) => {
+    const aktif = tombol === tombolDipilih;
+    tombol.classList.toggle("is-active", aktif);
+    tombol.setAttribute("aria-pressed", String(aktif));
+  });
+}
 
-console.log("Pengujian format Rupiah:", formatRupiah.format(85000));
+tombolFilter.forEach((tombol) => {
+  tombol.addEventListener("click", () => {
+    const kategori = tombol.dataset.filter;
+    aturFilterAktif(tombol);
+    renderProduk(kategori);
+  });
+});
 
-console.table([
-  { stok: 0, hasil: statusStok(0).label },
-  { stok: 3, hasil: statusStok(3).label },
-  { stok: 10, hasil: statusStok(10).label },
-]);
+if (targetProduk && ringkasanProduk) {
+  renderProduk();
+  console.table(produkUmkm);
 
-console.table(produkUmkm);
-renderProduk();
+  const elemenUji = document.createElement("span");
+  elemenUji.textContent = "Elemen uji remove";
+  targetProduk.append(elemenUji);
+  elemenUji.remove();
+  console.log("Latihan remove(): elemen uji berhasil dihapus.");
+}

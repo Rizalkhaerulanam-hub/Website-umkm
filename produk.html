@@ -78,6 +78,56 @@
           Mode aktif: Grid dua dimensi
         </p>
 
+        <div class="filter-toolbar" aria-label="Filter kategori produk">
+          <button
+            type="button"
+            class="filter-button is-active"
+            data-filter="Semua"
+            aria-pressed="true"
+          >
+            Semua
+          </button>
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="Kopi"
+            aria-pressed="false"
+          >
+            Kopi
+          </button>
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="Bundling"
+            aria-pressed="false"
+          >
+            Bundling
+          </button>
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="Minuman"
+            aria-pressed="false"
+          >
+            Minuman
+          </button>
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="Camilan"
+            aria-pressed="false"
+          >
+            Camilan
+          </button>
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="Perlengkapan"
+            aria-pressed="false"
+          >
+            Perlengkapan
+          </button>
+        </div>
         <p
           id="produk-ringkasan"
           class="layout-status"
@@ -90,6 +140,7 @@
           id="produk-dinamis"
           class="catalog layout-grid js-product-grid"
           aria-label="Kartu produk Saudi Coffee"
+          aria-live="polite"
         ></section>
         <div class="table-wrapper">
           <table>

@@ -24,7 +24,7 @@ if (navToggle && siteNav) {
     navToggle.setAttribute("aria-expanded", String(isOpen));
     navToggle.setAttribute(
       "aria-label",
-      isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+      isOpen ? "Tutup menu navigasi" : "Buka menu navigasi",
     );
   });
 

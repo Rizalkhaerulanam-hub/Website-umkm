@@ -312,9 +312,6 @@ address {
     width: min(100% - 28px, 920px);
   }
 }
-/* ================================
-   P03 - Katalog Produk
-   ================================ */
 
 .table-wrapper {
   width: 100%;
@@ -364,10 +361,6 @@ tbody tr:hover th {
   background: #eee3d4;
 }
 
-/* ================================
-   P03 - Figure & Figcaption
-   ================================ */
-
 figure {
   margin: 24px 0;
 }
@@ -389,9 +382,6 @@ figcaption {
   font-style: italic;
 }
 
-/* ================================
-   P03 - Galeri
-   ================================ */
 
 .gallery-grid {
   display: grid;
@@ -415,9 +405,6 @@ figcaption {
   border-radius: 12px;
 }
 
-/* ================================
-   P03 - Audio & Video
-   ================================ */
 
 audio,
 video {
@@ -438,9 +425,7 @@ video {
   font-size: 0.9rem;
 }
 
-/* ================================
-   P03 - Responsive
-   ================================ */
+/
 
 @media (max-width: 700px) {
   .gallery-grid {
@@ -461,9 +446,6 @@ video {
   }
 }
 
-/* ================================
-   P04 - FORM KONTAK
-   ================================ */
 
 form#form-kontak,
 pre#preview {
@@ -551,19 +533,19 @@ form#form-kontak button[type="submit"]:hover {
 pre#preview {
   background: var(--color-surface-alt);
   color: var(--color-text);
-  font-family: inherit; /* Menyamakan font dengan keseluruhan website */
+  font-family: inherit; 
   font-weight: bold;
-  white-space: pre-wrap; /* Memastikan teks panjang turun ke bawah, tidak melebar */
+  white-space: pre-wrap; 
 }
 
-/* Mengembalikan ukuran radio button ke ukuran aslinya */
+
 fieldset input[type="radio"] {
   width: auto;
   margin-right: 4px;
   cursor: pointer;
 }
 
-/* P05 — komponen konsisten, state interaktif, dan aksesibilitas */
+
 :where(h1, h2, h3, h4) {
   line-height: 1.2;
 }
@@ -621,7 +603,7 @@ fieldset input[type="checkbox"] {
   }
 }
 
-/* P06 — layout katalog: Grid dua dimensi dan Flexbox satu dimensi */
+
 .layout-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -788,7 +770,7 @@ code {
   color: #991b1b;
 }
 
-/*P07 — Responsive Mobile-First*/
+
 :root {
   --space-page: clamp(1rem, 0.65rem + 1.8vw, 2.5rem);
   --space-section: clamp(1rem, 0.7rem + 1.5vw, 1.875rem);
@@ -813,8 +795,6 @@ body {
   padding-block: clamp(1.25rem, 0.8rem + 2vw, 3rem);
 }
 
-/* Baseline mobile: navigasi, hero, katalog, dan galeri
-   menggunakan satu kolom sebelum ruang mencukupi. */
 .header-inner {
   flex-wrap: wrap;
   gap: 0.75rem 1rem;
@@ -928,8 +908,6 @@ pre#preview {
   white-space: pre-wrap;
 }
 
-/* Breakpoint 42rem: kartu mulai berdampingan saat ruang
-   cukup, bukan berdasarkan nama/perangkat tertentu. */
 @media (min-width: 42rem) {
   .header-inner {
     align-items: center;
@@ -954,8 +932,7 @@ pre#preview {
   }
 }
 
-/* Breakpoint 56rem: ruang cukup untuk hero dan katalog
-   tiga kolom tanpa membuat isi kartu terlalu sempit. */
+
 @media (min-width: 56rem) {
   .hero {
     grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
@@ -971,8 +948,7 @@ pre#preview {
   }
 }
 
-/* Pada zoom besar/layar pendek, isi tetap bisa dibaca dan
-   fokus keyboard tetap tampak. */
+
 @media (max-width: 30rem) {
   .brand {
     max-width: 100%;
@@ -999,5 +975,77 @@ pre#preview {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+.filter-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-block: 1.25rem 0.75rem;
+}
+
+.filter-button {
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.filter-button:hover,
+.filter-button.is-active {
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.filter-button.is-active {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.js-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.js-product-card {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.js-product-card h2 {
+  margin: 0 0 0.5rem;
+  color: var(--color-primary);
+  font-size: 1.15rem;
+}
+
+.js-product-card .price {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1.5rem;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-muted);
+  background: var(--color-surface-alt);
+  text-align: center;
+}
+
+@media (max-width: 30rem) {
+  .filter-toolbar {
+    gap: 0.45rem;
+  }
+  .filter-button {
+    flex: 1 1 auto;
   }
 }
